@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/view/login/login_view.dart';
 import 'package:mvvm/view_model/login/login_view_model.dart';
 import 'package:provider/provider.dart';
 

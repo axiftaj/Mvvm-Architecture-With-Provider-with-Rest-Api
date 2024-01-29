@@ -63,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
 
                             value.moviesList.data!.movies![index].posterurl.toString(),
                         errorBuilder: (context, error, stack){
-                              return Icon(Icons.error, color: Colors.red,);
+                              return const Icon(Icons.error, color: Colors.red,);
                         },
                           height: 40,
                           width: 40,
@@ -75,7 +75,7 @@ class _HomeViewState extends State<HomeView> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(Utils.averageRating(value.moviesList.data!.movies![index].ratings!).toStringAsFixed(1)),
-                            Icon(Icons.star , color: Colors.yellow,)
+                            const Icon(Icons.star , color: Colors.yellow,)
                           ],
                         ),
                       ),

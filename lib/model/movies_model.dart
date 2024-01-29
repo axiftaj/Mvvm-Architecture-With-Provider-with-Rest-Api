@@ -13,7 +13,7 @@ class MovieListModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     if (this.movies != null) {
       data['movies'] = this.movies!.map((v) => v.toJson()).toList();
     }
@@ -74,7 +74,7 @@ class Movies {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['id'] = this.id;
     data['title'] = this.title;
     data['year'] = this.year;

@@ -1,16 +1,9 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mvvm/model/user_model.dart';
 import 'package:mvvm/respository/auth_repository.dart';
-import 'package:mvvm/utils/routes/routes_name.dart';
-import 'package:mvvm/utils/utils.dart';
 import 'package:mvvm/view_model/services/session_manager/session_controller.dart';
-import 'package:mvvm/view_model/services/storage/local_storage.dart';
-import 'package:provider/provider.dart';
 
-import '../../data/response/api_response.dart';
 
 class LoginViewModel with ChangeNotifier {
 

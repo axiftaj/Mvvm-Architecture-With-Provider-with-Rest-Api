@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mvvm/model/user_model.dart';
 import '../storage/local_storage.dart';
 
@@ -34,8 +33,8 @@ class SessionController {
    Future<void> getUserFromPreference() async {
 
     try {
-      var userData = await sharedPreferenceClass.readValue('token')!;
-      var isLogin = await sharedPreferenceClass.readValue('isLogin')!;
+      var userData = await sharedPreferenceClass.readValue('token');
+      var isLogin = await sharedPreferenceClass.readValue('isLogin');
 
 
       if (userData.isNotEmpty) {
