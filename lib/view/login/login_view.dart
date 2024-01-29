@@ -44,11 +44,7 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(height: height * .085,),
             const LoginButtonWidget(),
             SizedBox(height: height * .02,),
-            InkWell(
-                onTap: (){
-                  Navigator.pushNamed(context, RoutesName.signUp);
-                },
-                child: const Text("Don't have an accont? Sign Up"))
+
 
           ],
         ),

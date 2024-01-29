@@ -3,18 +3,18 @@ import 'package:mvvm/data/response/status.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
 import 'package:mvvm/utils/utils.dart';
 import 'package:mvvm/view_model/home_view_model.dart';
-import 'package:mvvm/view_model/user_view_model.dart';
+import 'package:mvvm/view_model/services/storage/local_storage.dart';
 import 'package:provider/provider.dart';
 
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeViewState extends State<HomeView> {
 
   HomeViewViewModel  homeViewViewModel = HomeViewViewModel();
   
@@ -33,7 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           InkWell(
               onTap: (){
-                SharedPreferenceClass sharedPref =  SharedPreferenceClass();
+                LocalStorage sharedPref =  LocalStorage();
+
                 sharedPref.clearValue('token').then((value){
                   Navigator.pushNamed(context, RoutesName.login);
                 });

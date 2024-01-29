@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/view_model/services/splash_services.dart';
+import 'package:mvvm/view_model/services/splash/splash_services.dart';
 
 
 

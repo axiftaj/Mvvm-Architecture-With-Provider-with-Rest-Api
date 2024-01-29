@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm/view/login/login_view.dart';
-import 'package:mvvm/view_model/auth_view_model.dart';
+import 'package:mvvm/view_model/login/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
 class InputPasswordWidget extends StatelessWidget {

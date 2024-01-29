@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/view_model/auth_view_model.dart';
+import 'package:mvvm/view_model/login/auth_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../utils/utils.dart';
 

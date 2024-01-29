@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mvvm/model/user_model.dart';
-import '../../user_view_model.dart';
+import '../storage/local_storage.dart';
 
 //singleton class
 class SessionController {
 
-  SharedPreferenceClass sharedPreferenceClass = SharedPreferenceClass();
+  LocalStorage sharedPreferenceClass = LocalStorage();
   static final SessionController _session = SessionController._internel();
 
   bool? isLogin;
