@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm/view/login/login_view.dart';
-import 'package:mvvm/view_model/login/auth_view_model.dart';
+import 'package:mvvm/view_model/login/login_view_model.dart';
 import 'package:provider/provider.dart';
 
 class InputPasswordWidget extends StatelessWidget {
@@ -11,7 +11,7 @@ class InputPasswordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthViewModel>(
+    return Consumer<LoginViewModel>(
         builder: (context, provider, child){
           return ValueListenableBuilder(
               valueListenable: _obSecurePassword,

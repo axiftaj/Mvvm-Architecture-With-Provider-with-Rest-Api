@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../../data/response/api_response.dart';
 
-class AuthViewModel with ChangeNotifier {
+class LoginViewModel with ChangeNotifier {
 
   // importing auth repository to access the auth APIs
   final _myRepo = AuthRepository();

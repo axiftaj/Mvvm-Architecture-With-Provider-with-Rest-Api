@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/view_model/login/auth_view_model.dart';
+import 'package:mvvm/view_model/login/login_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../../utils/utils.dart';
 
@@ -10,7 +10,7 @@ class InputEmailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthViewModel>(
+    return Consumer<LoginViewModel>(
         builder: (context, provider, child){
           return TextFormField(
             keyboardType: TextInputType.emailAddress,

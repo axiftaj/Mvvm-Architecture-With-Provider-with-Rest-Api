@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/utils/routes/routes_name.dart';
+import 'package:mvvm/res/extensions.dart';
 import 'package:mvvm/view/login/widgets/input_email_widget.dart';
 import 'package:mvvm/view/login/widgets/input_password_widget.dart';
 import 'package:mvvm/view/login/widgets/login_button_widget.dart';
@@ -28,7 +28,6 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
 
-    final height  = MediaQuery.of(context).size.height * 1 ;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
@@ -41,11 +40,9 @@ class _LoginViewState extends State<LoginView> {
           children: [
             InputEmailWidget(focusNode: emailFocusNode, passwordFocusNode: passwordFocusNode),
             InputPasswordWidget(focusNode: passwordFocusNode),
-            SizedBox(height: height * .085,),
+            SizedBox(height: context.mediaQueryHeight * .085,),
             const LoginButtonWidget(),
-            SizedBox(height: height * .02,),
-
-
+            SizedBox(height: context.mediaQueryHeight * .02,),
           ],
         ),
       ),

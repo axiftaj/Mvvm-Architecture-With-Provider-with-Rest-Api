@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mvvm/data/response/status.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
 import 'package:mvvm/view/login/login_view.dart';
-import 'package:mvvm/view_model/login/auth_view_model.dart';
+import 'package:mvvm/view_model/login/login_view_model.dart';
 import 'package:mvvm/view_model/services/session_manager/session_controller.dart';
 import 'package:provider/provider.dart';
 import '../../../res/components/round_button.dart';
-import '../../../utils/app_validator.dart';
+import '../../../utils/validator/app_validator.dart';
 import '../../../utils/utils.dart';
 import '../../../view_model/services/storage/local_storage.dart';
 
@@ -15,7 +15,7 @@ class LoginButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthViewModel>(
+    return Consumer<LoginViewModel>(
         builder: (context, provider, child){
           return RoundButton(
             title: 'Login',
