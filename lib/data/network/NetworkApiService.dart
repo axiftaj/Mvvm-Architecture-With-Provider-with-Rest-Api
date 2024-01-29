@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:mvvm/data/app_excaptions.dart';
 import 'package:mvvm/data/network/BaseApiServices.dart';
@@ -12,6 +13,9 @@ class NetworkApiService extends BaseApiServices {
   @override
   Future getGetApiResponse(String url) async {
 
+    if (kDebugMode) {
+      print(url);
+    }
     dynamic responseJson ;
     try {
 
@@ -22,6 +26,9 @@ class NetworkApiService extends BaseApiServices {
       throw FetchDataException('No Internet Connection');
     }
 
+    if (kDebugMode) {
+      print(responseJson);
+    }
     return responseJson;
 
   }
@@ -30,13 +37,19 @@ class NetworkApiService extends BaseApiServices {
   @override
   Future getPostApiResponse(String url , dynamic data) async{
 
+
+    if (kDebugMode) {
+      print(url);
+      print(data);
+    }
+
     dynamic responseJson ;
     try {
 
       Response response = await post(
         Uri.parse(url),
         body: data
-      ).timeout(Duration(seconds: 10));
+      ).timeout( const Duration(seconds: 10));
 
       responseJson = returnResponse(response);
     }on SocketException {
@@ -44,10 +57,16 @@ class NetworkApiService extends BaseApiServices {
       throw FetchDataException('No Internet Connection');
     }
 
+    if (kDebugMode) {
+      print(responseJson);
+    }
     return responseJson ;
   }
 
   dynamic returnResponse (http.Response response){
+    if (kDebugMode) {
+      print(response.statusCode);
+    }
 
     switch(response.statusCode){
       case 200:
@@ -59,7 +78,7 @@ class NetworkApiService extends BaseApiServices {
       case 404:
         throw UnauthorisedException(response.body.toString());
       default:
-        throw FetchDataException('Error accured while communicating with server'+
+        throw FetchDataException('Error occured while communicating with server'+
             'with status code' +response.statusCode.toString());
 
     }

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
 import 'package:mvvm/view/home_screen.dart';
-import 'package:mvvm/view/login_view.dart';
+import 'package:mvvm/view/login/login_view.dart';
 import 'package:mvvm/view/signp_view.dart';
 import 'package:mvvm/view/splash_view.dart';
 

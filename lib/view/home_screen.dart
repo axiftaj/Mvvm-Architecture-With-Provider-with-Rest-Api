@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm/data/response/status.dart';
-import 'package:mvvm/model/movies_model.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
 import 'package:mvvm/utils/utils.dart';
 import 'package:mvvm/view_model/home_view_model.dart';
@@ -28,19 +27,19 @@ class _HomeScreenState extends State<HomeScreen> {
   
   @override
   Widget build(BuildContext context) {
-    final userPrefernece = Provider.of<UserViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
           InkWell(
               onTap: (){
-                userPrefernece.remove().then((value){
+                SharedPreferenceClass sharedPref =  SharedPreferenceClass();
+                sharedPref.clearValue('token').then((value){
                   Navigator.pushNamed(context, RoutesName.login);
                 });
               },
-              child: Center(child: Text('Logout'))),
-          SizedBox(width: 20,)
+              child: const Center(child: Text('Logout'))),
+          const SizedBox(width: 20,)
         ],
       ),
       body: ChangeNotifierProvider<HomeViewViewModel>(
@@ -48,11 +47,11 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Consumer<HomeViewViewModel>(
             builder: (context, value, _){
               switch(value.moviesList.status){
-                case Status.LOADING:
-                  return Center(child: CircularProgressIndicator());
-                case Status.ERROR:
+                case Status.loading:
+                  return const Center(child: CircularProgressIndicator());
+                case Status.error:
                   return Center(child: Text(value.moviesList.message.toString()));
-                case Status.COMPLETED:
+                case Status.completed:
                   return ListView.builder(
                       itemCount: value.moviesList.data!.movies!.length,
                       itemBuilder: (context,index){
@@ -81,9 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   });
-
+                default:
+                  return Container();
               }
-              return Container();
             }),
       ) ,
     );

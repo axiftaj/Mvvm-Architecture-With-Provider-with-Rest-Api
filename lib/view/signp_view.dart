@@ -15,10 +15,10 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
 
-  ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
+  final ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
@@ -62,7 +62,7 @@ class _SignUpViewState extends State<SignUpView> {
                   labelText: 'Email',
                   prefixIcon: Icon(Icons.alternate_email)
               ),
-              onFieldSubmitted: (valu){
+              onFieldSubmitted: (value){
                 Utils.fieldFocusChange(context, emailFocusNode, passwordFocusNode);
               },
             ),
@@ -78,7 +78,7 @@ class _SignUpViewState extends State<SignUpView> {
                     decoration: InputDecoration(
                       hintText: 'Password',
                       labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock_open_rounded),
+                      prefixIcon: const Icon(Icons.lock_open_rounded),
                       suffixIcon: InkWell(
                           onTap: (){
                             _obsecurePassword.value = !_obsecurePassword.value ;
@@ -113,7 +113,6 @@ class _SignUpViewState extends State<SignUpView> {
                   };
 
                   authViewMode.signUpApi(data , context);
-                  print('api hit');
                 }
               },
             ),
@@ -122,7 +121,7 @@ class _SignUpViewState extends State<SignUpView> {
               onTap: (){
                 Navigator.pushNamed(context, RoutesName.login);
               },
-                child: Text("Already  hace an accont? Logi"))
+                child: const Text("Already  hace an accont? Logi"))
 
           ],
         ),

@@ -6,57 +6,65 @@ import 'package:mvvm/model/user_model.dart';
 import 'package:mvvm/respository/auth_repository.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
 import 'package:mvvm/utils/utils.dart';
+import 'package:mvvm/view_model/services/session_manager/session_controller.dart';
 import 'package:mvvm/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 
+import '../data/response/api_response.dart';
+
 class AuthViewModel with ChangeNotifier {
 
+  // importing auth repository to access the auth APIs
   final _myRepo = AuthRepository();
-
-  bool _loading = false ;
-  bool get loading => _loading ;
 
   bool _signUpLoading = false ;
   bool get signUpLoading => _signUpLoading ;
 
+  bool _loginLoading = false ;
+  bool get loginLoading => _loginLoading ;
 
-  setLoading(bool value){
-    _loading = value;
+  setLoginLoading(bool value){
+    _loginLoading = value;
     notifyListeners();
   }
+
+  //creating getter method to store value of input email
+  String _email = '' ;
+  String get email => _email ;
+
+  setEmail(String email){
+    _email = email ;
+  }
+
+  //creating getter method to store value of input password
+  String _password = '' ;
+  String get password => _password ;
+
+  setPassword(String password){
+    _password = password ;
+  }
+
+
 
   setSignUpLoading(bool value){
     _signUpLoading = value;
     notifyListeners();
   }
 
-  Future<void> loginApi(dynamic data , BuildContext context) async {
+  Future<UserModel> loginApi(dynamic data) async {
 
-    setLoading(true);
+    try {
+      setLoginLoading(true);
+      final response = await _myRepo.loginApi(data);
+      await SessionController().saveUserInPreference(response);
+      await SessionController().getUserFromPreference();
+      setLoginLoading(false);
+      return response ;
+    }catch(e){
+      setLoginLoading(false);
+      throw Exception(e);
+    }
 
-    _myRepo.loginApi(data).then((value){
-      setLoading(false);
-      final userPreference = Provider.of<UserViewModel>(context , listen: false);
-      userPreference.saveUser(
-        UserModel(
-          token: value['token'].toString()
-        )
-      );
-
-      Utils.flushBarErrorMessage('Login Successfully', context);
-      Navigator.pushNamed(context, RoutesName.home);
-      if(kDebugMode){
-        print(value.toString());
-
-      }
-    }).onError((error, stackTrace){
-      setLoading(false);
-      Utils.flushBarErrorMessage(error.toString(), context);
-      if(kDebugMode){
-        print(error.toString());
-      }
-
-    });
   }
 
 

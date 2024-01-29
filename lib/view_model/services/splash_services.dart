@@ -1,34 +1,36 @@
 
-import 'package:flutter/foundation.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:mvvm/model/user_model.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
-import 'package:mvvm/view_model/user_view_model.dart';
+import 'package:mvvm/view_model/services/session_manager/session_controller.dart';
+
 
 class SplashServices {
 
-
-  Future<UserModel> getUserDate() => UserViewModel().getUser();
-
-
   void checkAuthentication(BuildContext context)async{
 
-    getUserDate().then((value)async{
+    SessionController().getUserFromPreference().then((value)async{
 
-      print(value.token.toString());
-
-      if(value.token.toString() == 'null' || value.token.toString() == ''){
-        await Future.delayed(Duration(seconds: 3));
-        Navigator.pushNamed(context, RoutesName.login);
+      if(SessionController().isLogin.toString() == 'true'){
+        Timer(const Duration(seconds: 2),
+              () =>
+          Navigator.pushNamedAndRemoveUntil(context, RoutesName.home, (route) => false),
+        );
       }else {
-        await  Future.delayed(Duration(seconds: 3));
-        Navigator.pushNamed(context, RoutesName.home);
+        Timer(const Duration(seconds: 2),
+              () =>
+          Navigator.pushNamedAndRemoveUntil(context, RoutesName.login, (route) => false),
+        );
+
       }
 
     }).onError((error, stackTrace){
-      if(kDebugMode){
-        print(error.toString());
-      }
+
+      Timer(const Duration(seconds: 2),
+            () =>
+        Navigator.pushNamedAndRemoveUntil(context, RoutesName.login, (route) => false),
+      );
+
     });
 
   }

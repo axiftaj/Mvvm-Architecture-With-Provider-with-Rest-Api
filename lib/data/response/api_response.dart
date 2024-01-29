@@ -9,12 +9,13 @@ class ApiResponse<T> {
 
   ApiResponse(this.status , this.data, this.message);
 
+  ApiResponse.notStarted() : status = Status.notStarted ;
 
-  ApiResponse.loading() : status = Status.LOADING ;
+  ApiResponse.loading() : status = Status.loading ;
 
-  ApiResponse.completed(this.data) : status = Status.COMPLETED ;
+  ApiResponse.completed(this.data) : status = Status.completed ;
 
-  ApiResponse.error(this.message) : status = Status.ERROR ;
+  ApiResponse.error(this.message) : status = Status.error ;
 
 
   @override
