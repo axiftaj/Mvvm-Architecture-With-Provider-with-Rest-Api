@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mvvm/respository/auth_api/auth_http_api_repository.dart';
-import 'package:mvvm/respository/auth_api/auth_repository.dart';
-import 'package:mvvm/respository/home_api/home_http_api_repository.dart';
-import 'package:mvvm/respository/home_api/home_repository.dart';
+import 'package:mvvm/repository/auth_api/auth_http_api_repository.dart';
+import 'package:mvvm/repository/auth_api/auth_repository.dart';
+import 'package:mvvm/repository/home_api/home_http_api_repository.dart';
+import 'package:mvvm/repository/home_api/home_repository.dart';
 import 'package:mvvm/view_model/home/home_view_model.dart';
 import 'package:mvvm/view_model/login/login_view_model.dart';
 import 'package:provider/provider.dart';

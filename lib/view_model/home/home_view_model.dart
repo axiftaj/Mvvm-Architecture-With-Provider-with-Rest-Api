@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:mvvm/data/response/api_response.dart';
 import 'package:mvvm/model/movies_model.dart';
-import 'package:mvvm/respository/home_api/home_repository.dart';
+import '../../repository/home_api/home_repository.dart';
 
 class HomeViewViewModel with ChangeNotifier {
 

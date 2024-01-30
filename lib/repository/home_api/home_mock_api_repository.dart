@@ -1,5 +1,6 @@
 import 'package:mvvm/model/movies_model.dart';
-import 'package:mvvm/respository/home_api/home_repository.dart';
+
+import 'home_repository.dart';
 
 class HomeMockApiRepository implements HomeRepository {
 

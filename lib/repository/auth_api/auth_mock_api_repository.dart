@@ -1,5 +1,6 @@
 import 'package:mvvm/model/user_model.dart';
-import 'package:mvvm/respository/auth_api/auth_repository.dart';
+
+import 'auth_repository.dart';
 
 
 class AuthMockApiRepository implements AuthRepository  {

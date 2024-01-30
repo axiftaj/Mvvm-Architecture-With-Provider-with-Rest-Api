@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mvvm/model/user_model.dart';
-import 'package:mvvm/respository/auth_api/auth_repository.dart';
 import 'package:mvvm/view_model/services/session_manager/session_controller.dart';
+
+import '../../repository/auth_api/auth_repository.dart';
 
 
 class LoginViewModel with ChangeNotifier {
