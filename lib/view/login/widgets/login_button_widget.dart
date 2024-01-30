@@ -39,18 +39,11 @@ class LoginButtonWidget extends StatelessWidget {
                 //   'password' : 'cityslicka',
                 // };
 
-
-              // Map data = {
-              //   'email' : 'eve.holt@reqres.in',
-              //   'password' : 'cityslicka',
-              // };
-
-              provider.loginApi(data).then((value)async{
+              provider.loginApi(data).then((value){
                 Navigator.pushNamed(context, RoutesName.home);
               }).onError((error, stackTrace){
                 Utils.flushBarErrorMessage(error.toString(), context);
               });
-
 
               }
             },

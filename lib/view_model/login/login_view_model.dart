@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mvvm/model/user_model.dart';
-import 'package:mvvm/respository/auth_repository.dart';
+import 'package:mvvm/respository/auth_api/auth_api_repository.dart';
+import 'package:mvvm/respository/auth_api/auth_repository.dart';
 import 'package:mvvm/view_model/services/session_manager/session_controller.dart';
 
 
 class LoginViewModel with ChangeNotifier {
 
-  // importing auth repository to access the auth APIs
-  final _myRepo = AuthRepository();
+  AuthRepository authRepository ;
+  LoginViewModel({required this.authRepository});
 
   bool _loginLoading = false ;
   bool get loginLoading => _loginLoading ;
@@ -38,7 +39,7 @@ class LoginViewModel with ChangeNotifier {
 
     try {
       setLoginLoading(true);
-      final response = await _myRepo.loginApi(data);
+      final response = await authRepository.loginApi(data);
       await SessionController().saveUserInPreference(response);
       await SessionController().getUserFromPreference();
       setLoginLoading(false);
