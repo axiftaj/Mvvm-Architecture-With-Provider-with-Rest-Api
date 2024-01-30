@@ -57,15 +57,16 @@ class _HomeViewState extends State<HomeView> {
                   return ListView.builder(
                       itemCount: value.moviesList.data!.tvShows!.length,
                       itemBuilder: (context,index){
+                        final moviesList = value.moviesList.data!.tvShows![index] ;
                         return Card(
                           child: ListTile(
                             leading: NetworkImageWidget(
                               borderRadius: 5,
-                              imageUrl: value.moviesList.data!.tvShows![index].imageThumbnailPath.toString(),
+                              imageUrl: moviesList.imageThumbnailPath.toString(),
                             )  ,
-                            title: Text(value.moviesList.data!.tvShows![index].name.toString()),
-                            subtitle: Text(value.moviesList.data!.tvShows![index].network.toString()),
-                            trailing: Text(value.moviesList.data!.tvShows![index].status.toString()),
+                            title: Text(moviesList.name.toString()),
+                            subtitle: Text(moviesList.network.toString()),
+                            trailing: Text(moviesList.status.toString()),
                           ),
                         );
                       });
