@@ -4,11 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mvvm/data/response/api_response.dart';
 import 'package:mvvm/model/movies_model.dart';
-import 'package:mvvm/respository/home_repository.dart';
+import 'package:mvvm/respository/home_api/home_repository.dart';
 
 class HomeViewViewModel with ChangeNotifier {
 
-  final _myRepo = HomeRepository();
+  HomeRepository  homeRepository ;
+  HomeViewViewModel({required this.homeRepository});
 
   ApiResponse<MovieListModel> moviesList = ApiResponse.loading();
 
@@ -22,8 +23,7 @@ class HomeViewViewModel with ChangeNotifier {
 
     setMoviesList(ApiResponse.loading());
 
-    _myRepo.fetchMoviesList().then((value){
-
+    homeRepository.fetchMoviesList().then((value){
       setMoviesList(ApiResponse.completed(value));
 
     }).onError((error, stackTrace){

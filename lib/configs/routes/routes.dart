@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mvvm/configs/routes/routes_name.dart';
 import 'package:mvvm/view/home/home_view.dart';
 import 'package:mvvm/view/login/login_view.dart';
-
 import 'package:mvvm/view/splash/splash_view.dart';
 
 class Routes {

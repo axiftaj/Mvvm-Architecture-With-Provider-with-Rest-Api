@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm/data/response/status.dart';
+import 'package:mvvm/main.dart';
 import 'package:mvvm/view/home/widgets/error_widgets.dart';
 import 'package:mvvm/view/home/widgets/logout_button_widget.dart';
 import 'package:mvvm/view_model/home_view_model.dart';
@@ -16,14 +17,6 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
 
-  HomeViewViewModel  homeViewViewModel = HomeViewViewModel();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    homeViewViewModel.fetchMoviesListApi();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +30,7 @@ class _HomeViewState extends State<HomeView> {
         ],
       ),
       body: ChangeNotifierProvider<HomeViewViewModel>(
-        create: (BuildContext context) => homeViewViewModel,
+        create: (BuildContext context) => HomeViewViewModel(homeRepository: getIt())..fetchMoviesListApi(),
         child: Consumer<HomeViewViewModel>(
             builder: (context, value, _){
               switch(value.moviesList.status){
@@ -51,7 +44,7 @@ class _HomeViewState extends State<HomeView> {
                   }
                   if(value.moviesList.data!.tvShows!.isEmpty){
                     return ElevatedButton(onPressed: (){
-                      homeViewViewModel.fetchMoviesListApi();
+                      value.fetchMoviesListApi();
                     }, child: const Text('No data found'));
                   }
                   return ListView.builder(

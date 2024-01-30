@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'loading_widget.dart';
 
+//custom network image widget, we will used this widget show images, also handled exceptions
+// this widget is generic, we can change it and this change will appear across the app
 class NetworkImageWidget extends StatelessWidget {
   final String imageUrl;
   final double width, height, borderRadius , iconSize;
@@ -21,7 +23,7 @@ class NetworkImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius),
-      child: imageUrl == '' || imageUrl == "null" ?
+      child: imageUrl == '' || imageUrl == null ?
       Container(
           width: width,
           height: height,

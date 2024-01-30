@@ -3,6 +3,8 @@ import '../color/color.dart';
 
 
 
+//custom round button component, we will used this widget show to show button
+// this widget is generic, we can change it and this change will appear across the app
 class RoundButton extends StatelessWidget {
 
   final String title ;
@@ -27,7 +29,8 @@ class RoundButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10)
         ),
         child: Center(
-            child:loading ? const CircularProgressIndicator(color: Colors.white,) :  Text(title ,
+            child:loading ? const CircularProgressIndicator(color: Colors.white,) :
+            Text(title ,
               style: const TextStyle(color: AppColors.whiteColor),
             )),
       ),
