@@ -36,10 +36,8 @@ class SessionController {
       var userData = await sharedPreferenceClass.readValue('token');
       var isLogin = await sharedPreferenceClass.readValue('isLogin');
 
-
       if (userData.isNotEmpty) {
         SessionController().user = UserModel.fromJson(jsonDecode(userData));
-        // print(SessionController().user.data!.userDetails!.maxPosition.toString());
       }
       SessionController().isLogin = isLogin == 'true'  ? true : false;
     } catch (e) {

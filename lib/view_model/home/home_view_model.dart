@@ -1,6 +1,3 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mvvm/data/response/api_response.dart';
 import 'package:mvvm/model/movies_model.dart';
@@ -32,7 +29,6 @@ class HomeViewViewModel with ChangeNotifier {
         print(stackTrace);
       }
       setMoviesList(ApiResponse.error(error.toString()));
-
     });
   }
 

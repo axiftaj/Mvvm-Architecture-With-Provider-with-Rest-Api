@@ -23,7 +23,7 @@ class NetworkImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius),
-      child: imageUrl == '' || imageUrl == null ?
+      child: imageUrl == '' ?
       Container(
           width: width,
           height: height,

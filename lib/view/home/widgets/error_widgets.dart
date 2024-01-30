@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../configs/components/internet_exception_widget.dart';
 import '../../../data/response/api_response.dart';
-import '../../../view_model/home_view_model.dart';
+import '../../../view_model/home/home_view_model.dart';
 
 class HomeErrorWidget extends StatelessWidget {
   const HomeErrorWidget({Key? key}) : super(key: key);

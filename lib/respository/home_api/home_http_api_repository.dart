@@ -3,7 +3,7 @@ import 'package:mvvm/model/movies_model.dart';
 import 'package:mvvm/configs/app_url.dart';
 import 'package:mvvm/respository/home_api/home_repository.dart';
 
-class HomeApiRepository implements HomeRepository{
+class HomeHttpApiRepository implements HomeRepository{
 
   final _apiServices = NetworkApiService() ;
 
