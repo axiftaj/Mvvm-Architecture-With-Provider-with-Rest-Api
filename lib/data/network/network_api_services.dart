@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:mvvm/data/app_exceptions.dart';
-import 'package:mvvm/data/network/BaseApiServices.dart';
+import 'package:mvvm/data/network/base_api_services.dart';
 import 'package:http/http.dart' as http;
 
 class NetworkApiService extends BaseApiServices {
@@ -20,7 +20,7 @@ class NetworkApiService extends BaseApiServices {
       final response = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 20));
       responseJson = returnResponse(response);
     }on SocketException {
-      throw FetchDataException('No Internet Connection');
+      throw NoInternetException('');
     }on TimeoutException {
       throw FetchDataException('Network Request time out');
     }
@@ -53,7 +53,7 @@ class NetworkApiService extends BaseApiServices {
 
       responseJson = returnResponse(response);
     }on SocketException {
-      throw FetchDataException('No Internet Connection');
+      throw NoInternetException('No Internet Connection');
     }on TimeoutException {
       throw FetchDataException('Network Request time out');
     }

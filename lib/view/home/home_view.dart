@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/data/response/api_response.dart';
 import 'package:mvvm/data/response/status.dart';
-
+import 'package:mvvm/view/home/widgets/error_widgets.dart';
+import 'package:mvvm/view/home/widgets/logout_button_widget.dart';
 import 'package:mvvm/view_model/home_view_model.dart';
-import 'package:mvvm/view_model/services/storage/local_storage.dart';
 import 'package:provider/provider.dart';
-
-import '../../configs/routes/routes_name.dart';
-
+import '../../configs/components/loading_widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -30,20 +27,12 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Popular Shows'),
-        actions: [
-          InkWell(
-              onTap: (){
-                LocalStorage sharedPref =  LocalStorage();
-                sharedPref.clearValue('token').then((value){
-                  Navigator.pushNamed(context, RoutesName.login);
-                });
-              },
-              child: const Center(child: Text('Logout'))),
-          const SizedBox(width: 20,)
+        actions: const [
+          LogoutButtonWidget(),
+          SizedBox(width: 20,)
         ],
       ),
       body: ChangeNotifierProvider<HomeViewViewModel>(
@@ -52,14 +41,9 @@ class _HomeViewState extends State<HomeView> {
             builder: (context, value, _){
               switch(value.moviesList.status){
                 case Status.loading:
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(child: LoadingWidget());
                 case Status.error:
-                  return InkWell(
-                      onTap: (){
-                        homeViewViewModel.setMoviesList(ApiResponse.loading());
-                        homeViewViewModel.fetchMoviesListApi();
-                      },
-                      child: Center(child: Text(value.moviesList.message.toString())));
+                  return const HomeErrorWidget();
                 case Status.completed:
                   if(value.moviesList.data!.tvShows == null){
                     return const Center(child: Text('Something went wrong, please try again later'));
@@ -74,7 +58,6 @@ class _HomeViewState extends State<HomeView> {
                       itemBuilder: (context,index){
                         return Card(
                           child: ListTile(
-
                             leading: Image.network(
                               value.moviesList.data!.tvShows![index].imageThumbnailPath.toString(),
                               errorBuilder: (context, error, stack){

@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mvvm/view_model/services/session_manager/session_controller.dart';
-
 import '../../../configs/routes/routes_name.dart';
 
 
