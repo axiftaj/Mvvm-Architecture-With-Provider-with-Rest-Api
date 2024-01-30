@@ -7,7 +7,7 @@ import 'package:mvvm/data/app_exceptions.dart';
 import 'package:mvvm/data/network/base_api_services.dart';
 import 'package:http/http.dart' as http;
 
-class NetworkApiService extends BaseApiServices {
+class NetworkApiService implements BaseApiServices {
 
   @override
   Future getGetApiResponse(String url) async {
@@ -24,7 +24,6 @@ class NetworkApiService extends BaseApiServices {
     }on TimeoutException {
       throw FetchDataException('Network Request time out');
     }
-
 
     if (kDebugMode) {
       print(responseJson);

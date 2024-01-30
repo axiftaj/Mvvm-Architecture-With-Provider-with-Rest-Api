@@ -5,6 +5,7 @@ import 'package:mvvm/view/home/widgets/logout_button_widget.dart';
 import 'package:mvvm/view_model/home_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../configs/components/loading_widget.dart';
+import '../../configs/components/network_image_widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -58,17 +59,13 @@ class _HomeViewState extends State<HomeView> {
                       itemBuilder: (context,index){
                         return Card(
                           child: ListTile(
-                            leading: Image.network(
-                              value.moviesList.data!.tvShows![index].imageThumbnailPath.toString(),
-                              errorBuilder: (context, error, stack){
-                                return const Icon(Icons.error, color: Colors.red,);
-                              },
-                              height: 40,
-                              width: 40,
-                              fit: BoxFit.cover,
-                            ),
+                            leading: NetworkImageWidget(
+                              borderRadius: 5,
+                              imageUrl: value.moviesList.data!.tvShows![index].imageThumbnailPath.toString(),
+                            )  ,
                             title: Text(value.moviesList.data!.tvShows![index].name.toString()),
                             subtitle: Text(value.moviesList.data!.tvShows![index].network.toString()),
+                            trailing: Text(value.moviesList.data!.tvShows![index].status.toString()),
                           ),
                         );
                       });
