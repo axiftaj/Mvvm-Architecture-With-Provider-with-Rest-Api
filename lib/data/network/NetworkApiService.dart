@@ -11,7 +11,6 @@ class NetworkApiService extends BaseApiServices {
 
   @override
   Future getGetApiResponse(String url) async {
-
     if (kDebugMode) {
       print(url);
     }
