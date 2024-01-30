@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/utils/routes/routes_name.dart';
 import 'package:mvvm/view_model/login/login_view_model.dart';
 import 'package:provider/provider.dart';
+import '../../../configs/routes/routes_name.dart';
+import '../../../configs/utils.dart';
+import '../../../configs/validator/app_validator.dart';
 import '../../../res/components/round_button.dart';
-import '../../../utils/validator/app_validator.dart';
-import '../../../utils/utils.dart';
+
 
 class LoginButtonWidget extends StatelessWidget {
   const LoginButtonWidget({Key? key}) : super(key: key);

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mvvm/respository/auth_api/auth_api_repository.dart';
 import 'package:mvvm/respository/auth_api/auth_repository.dart';
-import 'package:mvvm/utils/routes/routes.dart';
-import 'package:mvvm/utils/routes/routes_name.dart';
 import 'package:mvvm/view_model/login/login_view_model.dart';
 import 'package:provider/provider.dart';
+
+import 'configs/routes/routes.dart';
+import 'configs/routes/routes_name.dart';
 
 GetIt getIt = GetIt.instance;
 

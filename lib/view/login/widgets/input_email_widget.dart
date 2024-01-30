@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm/view_model/login/login_view_model.dart';
 import 'package:provider/provider.dart';
-import '../../../utils/utils.dart';
+
+import '../../../configs/utils.dart';
 
 
 class InputEmailWidget extends StatelessWidget {

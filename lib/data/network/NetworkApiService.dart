@@ -9,7 +9,6 @@ import 'package:http/http.dart' as http;
 
 class NetworkApiService extends BaseApiServices {
 
-
   @override
   Future getGetApiResponse(String url) async {
 

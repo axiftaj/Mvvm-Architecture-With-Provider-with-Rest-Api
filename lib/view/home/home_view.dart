@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mvvm/data/response/api_response.dart';
 import 'package:mvvm/data/response/status.dart';
-import 'package:mvvm/utils/routes/routes_name.dart';
+
 import 'package:mvvm/view_model/home_view_model.dart';
 import 'package:mvvm/view_model/services/storage/local_storage.dart';
 import 'package:provider/provider.dart';
+
+import '../../configs/routes/routes_name.dart';
 
 
 class HomeView extends StatefulWidget {
