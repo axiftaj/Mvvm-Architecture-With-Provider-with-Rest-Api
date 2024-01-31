@@ -1,4 +1,4 @@
-import 'package:mvvm/model/user_model.dart';
+import 'package:mvvm/model/user/user_model.dart';
 
 import 'auth_repository.dart';
 

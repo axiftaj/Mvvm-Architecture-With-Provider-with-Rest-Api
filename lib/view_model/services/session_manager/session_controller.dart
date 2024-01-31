@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:mvvm/model/user_model.dart';
+import 'package:mvvm/model/user/user_model.dart';
 import '../storage/local_storage.dart';
 
 //singleton class
