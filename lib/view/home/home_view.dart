@@ -39,16 +39,14 @@ class _HomeViewState extends State<HomeView> {
                 case Status.error:
                   return const HomeErrorWidget();
                 case Status.completed:
-                  if(value.moviesList.data!.tv_shows == null){
-                    return const Center(child: Text('Something went wrong, please try again later'));
-                  }
-                  if(value.moviesList.data!.tv_shows!.isEmpty){
+
+                  if(value.moviesList.data!.tv_shows.isEmpty){
                     return const Center(child:  Text('No data found'));
                   }
                   return ListView.builder(
-                      itemCount: value.moviesList.data!.tv_shows!.length,
+                      itemCount: value.moviesList.data!.tv_shows.length,
                       itemBuilder: (context,index){
-                        final moviesList = value.moviesList.data!.tv_shows![index] ;
+                        final moviesList = value.moviesList.data!.tv_shows[index] ;
                         return Card(
                           child: ListTile(
                             leading: NetworkImageWidget(
