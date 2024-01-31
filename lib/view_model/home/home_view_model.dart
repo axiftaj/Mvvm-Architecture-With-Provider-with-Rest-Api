@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:mvvm/data/response/api_response.dart';
-import 'package:mvvm/model/movies_model.dart';
+import 'package:mvvm/model/movie_list/movie_list_model.dart';
 import '../../repository/home_api/home_repository.dart';
 
 class HomeViewViewModel with ChangeNotifier {
@@ -22,7 +22,6 @@ class HomeViewViewModel with ChangeNotifier {
 
     homeRepository.fetchMoviesList().then((value){
       setMoviesList(ApiResponse.completed(value));
-
     }).onError((error, stackTrace){
       if (kDebugMode) {
         print(error);
