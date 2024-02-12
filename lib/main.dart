@@ -11,6 +11,9 @@ import 'package:provider/provider.dart';
 import 'configs/routes/routes.dart';
 import 'configs/routes/routes_name.dart';
 
+
+// creating an instance of GetIt
+// GetIt is a package used for service locator or to manage dependency injection
 GetIt getIt = GetIt.instance;
 
 void main() {
@@ -27,6 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
+          // initializing all the view model crated with Provider to used them across the app
           ChangeNotifierProvider(create: (_) => LoginViewModel(authRepository: getIt())),
           ChangeNotifierProvider(create: (_) => HomeViewViewModel(homeRepository: getIt())),
 
@@ -36,6 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        // this is the initial route indicating from where our app will start
         initialRoute: RoutesName.splash,
         onGenerateRoute: Routes.generateRoute,
       ),

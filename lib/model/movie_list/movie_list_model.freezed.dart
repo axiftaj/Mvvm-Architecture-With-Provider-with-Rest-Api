@@ -23,7 +23,8 @@ mixin _$MovieListModel {
   String get total => throw _privateConstructorUsedError;
   int get page => throw _privateConstructorUsedError;
   int get pages => throw _privateConstructorUsedError;
-  List<TvShows> get tv_shows => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tv_shows')
+  List<TvShows> get tvShow => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,11 @@ abstract class $MovieListModelCopyWith<$Res> {
           MovieListModel value, $Res Function(MovieListModel) then) =
       _$MovieListModelCopyWithImpl<$Res, MovieListModel>;
   @useResult
-  $Res call({String total, int page, int pages, List<TvShows> tv_shows});
+  $Res call(
+      {String total,
+      int page,
+      int pages,
+      @JsonKey(name: 'tv_shows') List<TvShows> tvShow});
 }
 
 /// @nodoc
@@ -56,7 +61,7 @@ class _$MovieListModelCopyWithImpl<$Res, $Val extends MovieListModel>
     Object? total = null,
     Object? page = null,
     Object? pages = null,
-    Object? tv_shows = null,
+    Object? tvShow = null,
   }) {
     return _then(_value.copyWith(
       total: null == total
@@ -71,9 +76,9 @@ class _$MovieListModelCopyWithImpl<$Res, $Val extends MovieListModel>
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
               as int,
-      tv_shows: null == tv_shows
-          ? _value.tv_shows
-          : tv_shows // ignore: cast_nullable_to_non_nullable
+      tvShow: null == tvShow
+          ? _value.tvShow
+          : tvShow // ignore: cast_nullable_to_non_nullable
               as List<TvShows>,
     ) as $Val);
   }
@@ -87,7 +92,11 @@ abstract class _$$MovieListModelImplCopyWith<$Res>
       __$$MovieListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String total, int page, int pages, List<TvShows> tv_shows});
+  $Res call(
+      {String total,
+      int page,
+      int pages,
+      @JsonKey(name: 'tv_shows') List<TvShows> tvShow});
 }
 
 /// @nodoc
@@ -104,7 +113,7 @@ class __$$MovieListModelImplCopyWithImpl<$Res>
     Object? total = null,
     Object? page = null,
     Object? pages = null,
-    Object? tv_shows = null,
+    Object? tvShow = null,
   }) {
     return _then(_$MovieListModelImpl(
       total: null == total
@@ -119,23 +128,24 @@ class __$$MovieListModelImplCopyWithImpl<$Res>
           ? _value.pages
           : pages // ignore: cast_nullable_to_non_nullable
               as int,
-      tv_shows: null == tv_shows
-          ? _value._tv_shows
-          : tv_shows // ignore: cast_nullable_to_non_nullable
+      tvShow: null == tvShow
+          ? _value._tvShow
+          : tvShow // ignore: cast_nullable_to_non_nullable
               as List<TvShows>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$MovieListModelImpl implements _MovieListModel {
   _$MovieListModelImpl(
       {this.total = '',
       this.page = 0,
       this.pages = 0,
-      final List<TvShows> tv_shows = const []})
-      : _tv_shows = tv_shows;
+      @JsonKey(name: 'tv_shows') final List<TvShows> tvShow = const []})
+      : _tvShow = tvShow;
 
   factory _$MovieListModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MovieListModelImplFromJson(json);
@@ -149,18 +159,18 @@ class _$MovieListModelImpl implements _MovieListModel {
   @override
   @JsonKey()
   final int pages;
-  final List<TvShows> _tv_shows;
+  final List<TvShows> _tvShow;
   @override
-  @JsonKey()
-  List<TvShows> get tv_shows {
-    if (_tv_shows is EqualUnmodifiableListView) return _tv_shows;
+  @JsonKey(name: 'tv_shows')
+  List<TvShows> get tvShow {
+    if (_tvShow is EqualUnmodifiableListView) return _tvShow;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tv_shows);
+    return EqualUnmodifiableListView(_tvShow);
   }
 
   @override
   String toString() {
-    return 'MovieListModel(total: $total, page: $page, pages: $pages, tv_shows: $tv_shows)';
+    return 'MovieListModel(total: $total, page: $page, pages: $pages, tvShow: $tvShow)';
   }
 
   @override
@@ -171,13 +181,13 @@ class _$MovieListModelImpl implements _MovieListModel {
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
             (identical(other.pages, pages) || other.pages == pages) &&
-            const DeepCollectionEquality().equals(other._tv_shows, _tv_shows));
+            const DeepCollectionEquality().equals(other._tvShow, _tvShow));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, total, page, pages,
-      const DeepCollectionEquality().hash(_tv_shows));
+      const DeepCollectionEquality().hash(_tvShow));
 
   @JsonKey(ignore: true)
   @override
@@ -196,10 +206,11 @@ class _$MovieListModelImpl implements _MovieListModel {
 
 abstract class _MovieListModel implements MovieListModel {
   factory _MovieListModel(
-      {final String total,
-      final int page,
-      final int pages,
-      final List<TvShows> tv_shows}) = _$MovieListModelImpl;
+          {final String total,
+          final int page,
+          final int pages,
+          @JsonKey(name: 'tv_shows') final List<TvShows> tvShow}) =
+      _$MovieListModelImpl;
 
   factory _MovieListModel.fromJson(Map<String, dynamic> json) =
       _$MovieListModelImpl.fromJson;
@@ -211,7 +222,8 @@ abstract class _MovieListModel implements MovieListModel {
   @override
   int get pages;
   @override
-  List<TvShows> get tv_shows;
+  @JsonKey(name: 'tv_shows')
+  List<TvShows> get tvShow;
   @override
   @JsonKey(ignore: true)
   _$$MovieListModelImplCopyWith<_$MovieListModelImpl> get copyWith =>
@@ -224,6 +236,7 @@ TvShows _$TvShowsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TvShows {
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
   String get permalink => throw _privateConstructorUsedError;
   String get endDate => throw _privateConstructorUsedError;
@@ -242,7 +255,7 @@ abstract class $TvShowsCopyWith<$Res> {
       _$TvShowsCopyWithImpl<$Res, TvShows>;
   @useResult
   $Res call(
-      {String name,
+      {@JsonKey(name: 'name') String name,
       String permalink,
       String endDate,
       String network,
@@ -307,7 +320,7 @@ abstract class _$$TvShowsImplCopyWith<$Res> implements $TvShowsCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name,
+      {@JsonKey(name: 'name') String name,
       String permalink,
       String endDate,
       String network,
@@ -366,7 +379,7 @@ class __$$TvShowsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TvShowsImpl implements _TvShows {
   _$TvShowsImpl(
-      {this.name = '',
+      {@JsonKey(name: 'name') this.name = '',
       this.permalink = '',
       this.endDate = '',
       this.network = '',
@@ -377,7 +390,7 @@ class _$TvShowsImpl implements _TvShows {
       _$$TvShowsImplFromJson(json);
 
   @override
-  @JsonKey()
+  @JsonKey(name: 'name')
   final String name;
   @override
   @JsonKey()
@@ -436,7 +449,7 @@ class _$TvShowsImpl implements _TvShows {
 
 abstract class _TvShows implements TvShows {
   factory _TvShows(
-      {final String name,
+      {@JsonKey(name: 'name') final String name,
       final String permalink,
       final String endDate,
       final String network,
@@ -446,6 +459,7 @@ abstract class _TvShows implements TvShows {
   factory _TvShows.fromJson(Map<String, dynamic> json) = _$TvShowsImpl.fromJson;
 
   @override
+  @JsonKey(name: 'name')
   String get name;
   @override
   String get permalink;

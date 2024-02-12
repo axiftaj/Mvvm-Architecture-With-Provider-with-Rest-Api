@@ -11,7 +11,7 @@ _$MovieListModelImpl _$$MovieListModelImplFromJson(Map<String, dynamic> json) =>
       total: json['total'] as String? ?? '',
       page: json['page'] as int? ?? 0,
       pages: json['pages'] as int? ?? 0,
-      tv_shows: (json['tv_shows'] as List<dynamic>?)
+      tvShow: (json['tv_shows'] as List<dynamic>?)
               ?.map((e) => TvShows.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -23,7 +23,7 @@ Map<String, dynamic> _$$MovieListModelImplToJson(
       'total': instance.total,
       'page': instance.page,
       'pages': instance.pages,
-      'tv_shows': instance.tv_shows,
+      'tv_shows': instance.tvShow,
     };
 
 _$TvShowsImpl _$$TvShowsImplFromJson(Map<String, dynamic> json) =>
